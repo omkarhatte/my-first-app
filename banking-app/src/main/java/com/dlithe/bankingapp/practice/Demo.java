@@ -11,10 +11,11 @@ public class Demo {
     * */
 
 
-    public void addNumbers(int a, int b){
+    public void addNumbers(int a, int b,int c){
         a=2;
         b=10;
-        System.out.println(a+b);
+        c=30;
+        System.out.println(a+b+c);
     }
 
 
