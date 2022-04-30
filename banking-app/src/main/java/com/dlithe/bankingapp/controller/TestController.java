@@ -6,6 +6,8 @@ import com.dlithe.bankingapp.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class TestController {
 
@@ -20,9 +22,9 @@ public class TestController {
 
     }*/
 
-    @GetMapping("get-user-details/{userId}")
-    public UserDetailsResponse getUserDetails(@PathVariable int userId){
-        return testService.getUserDetails(userId);
+    @GetMapping("get-users")
+    public List<UserDetailsResponse> getUserDetails(){
+        return testService.getUserDetails();
 
     }
 }

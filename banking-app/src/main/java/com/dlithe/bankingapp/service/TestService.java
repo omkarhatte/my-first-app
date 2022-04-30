@@ -4,11 +4,13 @@ import com.dlithe.bankingapp.dto.TestDto;
 import com.dlithe.bankingapp.dto.UserDetailsResponse;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public interface TestService {
 
     String registerCustomer(TestDto testDto);
 
 
-    UserDetailsResponse getUserDetails(int userId);
+    List<UserDetailsResponse> getUserDetails();
 }

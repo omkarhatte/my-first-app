@@ -8,6 +8,8 @@ import com.dlithe.bankingapp.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,19 +26,21 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public UserDetailsResponse getUserDetails(int userId) {
-       Optional<User> user = userDAO.findById(userId);
-       if(!user.isPresent()){
-           throw new NullPointerException("User not found!!");
-       }
-       User userDetails = user.get();
+    public List<UserDetailsResponse> getUserDetails() {
 
-       UserDetailsResponse userDetailsResponse = new UserDetailsResponse();
-       userDetailsResponse.setUserName(userDetails.getUserName());
-       userDetailsResponse.setUserAge(userDetails.getUserAge());
-       userDetailsResponse.setId(userDetails.getId());
+        List<UserDetailsResponse> userDetailsResponseList = new ArrayList<>();
 
-       return userDetailsResponse;
+        List<User> userList = userDAO.findAll();
+
+        for (User user : userList) {
+            UserDetailsResponse userDetailsResponse = new UserDetailsResponse();
+            userDetailsResponse.setUserName(user.getUserName());
+            userDetailsResponse.setUserAge(user.getUserAge());
+            userDetailsResponse.setId(user.getId());
+            userDetailsResponseList.add(userDetailsResponse);
+
+        }
+        return userDetailsResponseList;
 
     }
 }
