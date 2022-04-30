@@ -13,4 +13,6 @@ public interface TestService {
 
 
     List<UserDetailsResponse> getUserDetails();
+
+    UserDetailsResponse fetchUserDetailsByUserName(String userName);
 }
