@@ -43,4 +43,18 @@ public class TestServiceImpl implements TestService {
         return userDetailsResponseList;
 
     }
+
+    @Override
+    public UserDetailsResponse fetchUserDetailsByUserName(String userName) {
+
+        UserDetailsResponse userDetailsResponse = new UserDetailsResponse();
+
+        User user = userDAO.findByName(userName);
+
+        userDetailsResponse.setUserName(user.getUserName());
+        userDetailsResponse.setUserAge(user.getUserAge());
+        userDetailsResponse.setId(user.getId());
+
+        return userDetailsResponse;
+    }
 }

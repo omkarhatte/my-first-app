@@ -22,9 +22,14 @@ public class TestController {
 
     }*/
 
-    @GetMapping("get-users")
-    public List<UserDetailsResponse> getUserDetails(){
-        return testService.getUserDetails();
+//    @GetMapping("get-users")
+//    public List<UserDetailsResponse> getUserDetails(){
+//        return testService.getUserDetails();
+//
+//    }
 
+    @GetMapping("fetch-user-details/{userName}")
+    public UserDetailsResponse fetchUserDetailsBasedUserName(@PathVariable String userName){
+        return testService.fetchUserDetailsByUserName(userName);
     }
 }
